@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños Angielica</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff69b4, #ffa500);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 50px;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    .cake {
+      font-size: 5rem;
+      margin-top: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .bottles {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .bottle {
+      font-size: 3.5rem;
+      margin: 15px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: yellow;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 ¡Feliz Cumpleaños Angielica! 🥳</h1>
+  <div class="cake">🎂</div>
+
+  <div class="bottles" id="bottle-container">
+    <!-- Botellas variadas -->
+  </div>
+
+  <script>
+    const bottleContainer = document.getElementById('bottle-container');
+    const bottles = ['🍾', '🍷', '🍸', '🥂', '🍹', '🥃', '🍺', '🍻'];
+
+    for (let i = 0; i < 20; i++) {
+      const bottle = document.createElement('div');
+      bottle.className = 'bottle';
+      bottle.textContent = bottles[Math.floor(Math.random() * bottles.length)];
+      bottleContainer.appendChild(bottle);
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.top = '-10px';
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      document.body.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 5000);
+    }
+
+    setInterval(createConfetti, 200);
+  </script>
+</body>
+</html>
